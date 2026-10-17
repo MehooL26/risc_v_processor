@@ -6,24 +6,23 @@ The design will be verified through simulation and evaluated for FPGA implementa
 
 ## Current Progress
 
-### Arithmetic Logic Unit (ALU)
+- **ALU:** Implemented arithmetic and logical operations, including ADD, SUB, AND, and OR.
+- **Main Decoder:** Decodes instruction opcodes and generates control signals.
+- **ALU Decoder:** Uses `ALUop`, `funct3`, and instruction function bits to select the required ALU operation.
+- **Simulation:** Developing testbenches using Icarus Verilog to verify module functionality.
 
-Implemented a 32-bit ALU in Verilog with the following operations:
+## Architecture
 
-- **ADD** — Addition
-- **SUB** — Subtraction using two's complement
-- **AND** — Bitwise AND
-- **OR** — Bitwise OR
+The processor is being developed around the following components:
 
-The ALU currently includes the following status outputs:
-
-- `Z` — Zero flag
-- `N` — Negative flag
-- `C` — Carry flag
-- `V` — Overflow flag
-- `c_out` — Arithmetic carry-out
-
-The ALU uses a 2-bit control signal to select between the four operations. A testbench is used to verify its behavior through simulation.
+- Program Counter (PC)
+- Instruction Memory
+- Main Decoder and ALU Decoder
+- Register File
+- Immediate Generator
+- Arithmetic Logic Unit (ALU)
+- Data Memory
+- Control and Datapath Integration
 
 ## Tools and Technologies
 
@@ -37,8 +36,11 @@ The ALU uses a 2-bit control signal to select between the four operations. A tes
 ```text
 risc_v_processor/
 ├── alu.v
+├── decoder.v
+├── alu_decoder.v
 ├── testbenches/
-│   └── alu_tb.v
+│   ├── alu_tb.v
+│   └── decoder_tb.v
 └── README.md
 ```
 
